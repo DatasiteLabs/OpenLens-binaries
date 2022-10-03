@@ -29,7 +29,7 @@ jobs:
           git clone https://github.com/lensapp/lens.git 
           cp update.js lens/update.js
           cd lens
-          git checkout main 
+          git checkout -b main 
           node update.js
       - name: Build Lens
         run: |
