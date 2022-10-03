@@ -29,7 +29,7 @@ jobs:
           git clone https://github.com/lens/lens.git
           cp update.js lens/update.js
           cd lens
-          git checkout v${{ env.LENS_VERSION }}
+          git checkout main 
           node update.js
       - name: Build Lens
         run: |
