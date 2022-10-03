@@ -26,7 +26,7 @@ jobs:
           node-version: 16.16.0
       - name: Update Lens
         run: |
-          git clone https://github.com/lens/lens.git
+          git clone https://github.com/lensapp/lens.git 
           cp update.js lens/update.js
           cd lens
           git checkout main 
