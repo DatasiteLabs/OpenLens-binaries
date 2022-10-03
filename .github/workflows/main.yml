@@ -29,7 +29,7 @@ jobs:
           git clone https://github.com/lensapp/lens.git 
           cp update.js lens/update.js
           cd lens
-          git checkout -b main 
+          git checkout v${{ env.LENS_VERSION }} 
           node update.js
       - name: Build Lens
         run: |
@@ -38,7 +38,7 @@ jobs:
             choco install visualstudio2019buildtools visualstudio2019-workload-vctools
           fi
           if [ "$RUNNER_OS" == "macOS" ]; then
-                env ELECTRON_BUILDER_EXTRA_ARGS="--arm64 --x64 --config.dmg.sign=false" --asc-provider=BillyTobon113908345 make build
+                env ELECTRON_BUILDER_EXTRA_ARGS="--arm64 --x64 --config.dmg.sign=false" make build
                 for file in dist/OpenLens-${{ env.LENS_VERSION }}-latest.*.dmg; do
                     if [[ "$file" == *"arm64"* ]]; then
                         cp "$file" releasefiles/OpenLens-${{ env.LENS_VERSION }}-arm64.dmg
